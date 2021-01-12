@@ -1,0 +1,4 @@
+include ':example'
+include ':bouncy'
+include ':example'
+rootProject.name = "library"
