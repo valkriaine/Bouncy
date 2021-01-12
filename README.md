@@ -1,6 +1,6 @@
 # Bouncy 
 
-[![](https://jitpack.io/v/Valkriaine/bouncy.svg)](https://jitpack.io/#Valkriaine/bouncy)
+[ ![Download](https://api.bintray.com/packages/valkriaine/factor/com.factor.bouncy/images/download.svg?version=1.0) ](https://bintray.com/valkriaine/factor/com.factor.bouncy/1.0/link)
 
 Add IOS-like overscroll animation to your scrolling views. 
 
@@ -8,21 +8,11 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
 # Add Bouncy to your project
 
-In your project build.gradle:
-```gradle
-    allprojects {
-        repositories {
-            jcenter()
-            maven { url "https://jitpack.io" }
-        }
-   }
-  ```
-  
-  
+ 
 In your app module build.gradle:
 ```
    dependencies {
-        implementation 'com.github.Valkriaine:bouncy:1.0'
+        implementation 'library:bouncy:1.0'
    }
  ```
 
