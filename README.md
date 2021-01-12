@@ -1,8 +1,30 @@
 # Bouncy 
 
+[![](https://jitpack.io/v/Valkriaine/bouncy.svg)](https://jitpack.io/#Valkriaine/bouncy)
+
 Add IOS-like overscroll animation to your scrolling views. 
 
 Currently includes BouncyRecyclerView and BouncyNestedScrollView.
+
+# Add Bouncy to your project
+
+In your project build.gradle:
+```gradle
+    allprojects {
+        repositories {
+            jcenter()
+            maven { url "https://jitpack.io" }
+        }
+   }
+  ```
+  
+  
+In your app module build.gradle:
+```
+   dependencies {
+        implementation 'com.github.Valkriaine:bouncy:1.0'
+   }
+ ```
 
 
 
@@ -10,7 +32,7 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
 NestedScrollView with bouncy overscroll effect, modified from original NestedScrollView
 
-<img src="./images/BouncyNestedScrollViewDemo.gif"/>
+<img src="./images/BouncyNestedScrollViewDemo.gif"/> <img src="./images/FactorLauncherSettingsScreen.gif"/>
 
 Usage:
 
