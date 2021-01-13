@@ -3,29 +3,20 @@
 [ ![Download](https://api.bintray.com/packages/valkriaine/factor/bouncy/images/download.svg?version=1.0) ](https://bintray.com/valkriaine/factor/bouncy/1.0/link)
 [![](https://jitpack.io/v/Valkriaine/bouncy.svg)](https://jitpack.io/#Valkriaine/bouncy)
 
-Add IOS-like overscroll animation to your scrolling views. 
+Add IOS-like overscroll animation to your scrolling views using [SpringAnimation](https://developer.android.com/guide/topics/graphics/spring-animation). 
 
 Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
 # Add Bouncy to your project
 
-In your project build.gradle:
-```gradle
-    allprojects {
-        repositories {
-            ...
-            maven { url "https://jitpack.io" }
-        }
-   }
-  ```
- 
-In your app module build.gradle:
+ In your app module build.gradle:
 ```
    dependencies {
-        implementation 'com.github.Valkriaine:bouncy:1.0'
+        implementation 'androidx.recyclerview:recyclerview:1.1.0'
+        implementation 'com.factor:bouncy:1.0'
    }
  ```
-
+(must include androidx.recyclerview as well for BouncyRecyclerView to work)
 
 
 # BouncyNestedScrollView
@@ -41,7 +32,9 @@ Use as normal NestedScrollView. Place it in your layout:
 ```xml
 <com.factor.bouncy.BouncyNestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:fling_bounce_animation_size=".5"
+        app:overscroll_bounce_animation_size=".5">
 
     <LinearLayout
             android:orientation="vertical"
@@ -57,6 +50,12 @@ Use as normal NestedScrollView. Place it in your layout:
 </com.factor.bouncy.BouncyNestedScrollView>
 ```
 
+```fling_bounce_animation_size``` specifies the magnitude of overscroll effect for fling, default is 0.5 if no value is given. 
+
+```overscroll_bounce_animation_size``` specifies the magnitude of overscroll effect for drag, default is 0.5 if no value is given. 
+
+Strongly suggest to keep both values lower than 5.
+
 # BouncyRecyclerView
 
 BouncyRecyclerView adds overscroll effect to RecyclerView and supports drag & drop and swiping gestures
@@ -68,7 +67,7 @@ Usage:
 Use as normal RecyclerView. Place it in your layout:
 
 ```xml
-<com.valkriaine.factor.BouncyRecyclerView
+<com.factor.bouncy.BouncyRecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -91,6 +90,7 @@ set up layout manager and adapter. Theoratically supports any LayoutManager:
 ```allow_drag_reorder``` and ```allow_item_swipe``` are set to false by default. If you would like to enable these features, simply set them to true.
 
 
+**Drag & drop does not work out of the box. 
 
 For drag & drop or swipe gestures to work, make your adapter extend ```BouncyRecyclerView.Adapter``` and add constructor matching parent.
 (If your adapter does not extend BouncyRecyclerView.Adapter, BouncyRecyclerView will simply disable the gestures)
@@ -161,3 +161,10 @@ public class MyAdapter extends BouncyRecyclerView.Adapter
     }
 }
 ```
+
+# My other projects
+
+[Factor Launcher](https://github.com/Valkriaine/Factor_Launcher_Reboot) - A Windows Phone inspired launcher with some modern touch
+
+[Mutify](https://github.com/Valkriaine/Mutify) - Automatically turn on do-not-disturb based on where you are
+
