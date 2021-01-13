@@ -174,5 +174,6 @@ public class MyAdapter extends BouncyRecyclerView.Adapter
 # My other projects
 
 [Factor Launcher](https://github.com/Valkriaine/Factor_Launcher_Reboot) - A Windows Phone inspired launcher with some modern touch
+
 [Mutify](https://github.com/Valkriaine/Mutify) - Automatically turn on do-not-disturb based on where you are
 
