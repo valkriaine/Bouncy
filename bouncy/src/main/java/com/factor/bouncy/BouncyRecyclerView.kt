@@ -17,11 +17,9 @@ import com.factor.bouncy.util.OnOverPullListener
 @Suppress("unused")
 class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(context, attrs)
 {
-    abstract class Adapter: RecyclerView.Adapter<ViewHolder>(), DragDropAdapter
-
     private lateinit var callBack: DragDropCallBack
 
-    var onOverPullListener: OnOverPullListener? = null
+    private var onOverPullListener: OnOverPullListener? = null
 
     var overscrollAnimationSize = 0.5f
 
@@ -51,6 +49,10 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                 .setStiffness(SpringForce.STIFFNESS_LOW)
         )
 
+    fun addOnOverPulledListener(onOverPullListener: OnOverPullListener)
+    {
+        this.onOverPullListener = onOverPullListener
+    }
 
     override fun setAdapter(adapter: RecyclerView.Adapter<*>?)
     {
@@ -70,16 +72,21 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         for (i in 0 until childCount) action(getChildViewHolder(getChildAt(i)) as T)
     }
 
-    init
-    {
+    init {
+
         //read attributes
         context.theme.obtainStyledAttributes(attrs, R.styleable.BouncyRecyclerView, 0, 0)
             .apply{
-                overscrollAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_overscroll_bounce_animation_size, 0.5f)
-                flingAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_fling_bounce_animation_size, 0.5f)
-                longPressDragEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_drag_reorder, false)
-                itemSwipeEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_item_swipe, false)
-                recycle()
+                try {
+                    overscrollAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_overscroll_bounce_animation_size, 0.5f)
+                    flingAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_fling_bounce_animation_size, 0.5f)
+                    longPressDragEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_drag_reorder, false)
+                    itemSwipeEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_item_swipe, false)
+                }
+                finally
+                {
+                    recycle()
+                }
             }
 
         val rc = this
@@ -148,4 +155,6 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
             }
         }
     }
+
+    abstract class Adapter: RecyclerView.Adapter<ViewHolder>(), DragDropAdapter
 }

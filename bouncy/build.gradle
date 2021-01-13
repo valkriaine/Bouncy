@@ -6,7 +6,7 @@ apply plugin: 'maven-publish'
 
 def libraryGroupId = 'com.factor'
 def libraryArtifactId = 'bouncy'
-def libraryVersion = '1.0'
+def libraryVersion = '1.1'
 
 
 task androidJavadocs(type: Javadoc) {
@@ -59,10 +59,10 @@ bintray {
         vcsUrl = 'https://github.com/Valkriaine/bouncy.git'
         publicDownloadNumbers = true
         version {
-            name = '1.0'
-            desc = '1.0 release'
+            name = '1.1'
+            desc = '1.1 release'
             released  = new Date()
-            vcsTag = '1.0'
+            vcsTag = '1.1'
         }
     }
 }
@@ -74,8 +74,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
