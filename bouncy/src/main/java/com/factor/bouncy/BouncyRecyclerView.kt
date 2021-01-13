@@ -116,10 +116,28 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
 
                     private fun onPullAnimation(deltaDistance: Float)
                     {
-                        val delta =
-                            if (direction == DIRECTION_BOTTOM)
-                                1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                            else -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                        var delta = 0f
+
+
+                        /* honestly I have no idea why enabling gestures affects the direction that edge effect senses
+                        ** but for now this is the work around to prevent the spring from animating to the opposite direction
+                         */
+                        if (!longPressDragEnabled && !itemSwipeEnabled)
+                        {
+                            when
+                            {
+                                direction == DIRECTION_BOTTOM -> delta = -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                                direction != DIRECTION_BOTTOM -> delta = 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                            }
+                        }
+                        else
+                        {
+                            when
+                            {
+                                direction == DIRECTION_BOTTOM -> delta = 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                                direction != DIRECTION_BOTTOM -> delta = -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                            }
+                        }
                         spring.cancel()
                         rc.translationY += delta
 
@@ -138,9 +156,22 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                     override fun onAbsorb(velocity: Int)
                     {
                         super.onAbsorb(velocity)
-                        val v =
-                            if (direction == DIRECTION_BOTTOM) 1 * velocity * flingAnimationSize
-                            else -1 * velocity * flingAnimationSize
+
+                        /* honestly I have no idea why enabling gestures affects the direction that edge effect senses
+                        ** but for now this is the work around to prevent the spring from animating to the opposite direction
+                         */
+                        val v: Float =
+                            if (!longPressDragEnabled && !itemSwipeEnabled)
+                                if (direction == DIRECTION_BOTTOM)
+                                     -1 * velocity * flingAnimationSize
+                                else
+                                    1 * velocity * flingAnimationSize
+                            else
+                                if (direction == DIRECTION_BOTTOM)
+                                    1 * velocity * flingAnimationSize
+                                else
+                                    -1 * velocity * flingAnimationSize
+
                         spring.setStartVelocity(v).start()
 
                         forEachVisibleHolder{holder: ViewHolder? -> if (holder is BouncyViewHolder)holder.onAbsorb(velocity)}
