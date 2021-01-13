@@ -9,11 +9,32 @@ def libraryArtifactId = 'bouncy'
 def libraryVersion = '1.0'
 
 
+task androidJavadocs(type: Javadoc) {
+    failOnError = false
+    source = android.sourceSets.main.java.srcDirs
+    ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+    classpath += files(ext.androidJar)
+    exclude '**/R.html', '**/R.*.html', '**/index.html'
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
+                artifact androidJavadocsJar
+                artifact androidSourcesJar
                 groupId = libraryGroupId
                 artifactId = libraryArtifactId
                 version = libraryVersion
