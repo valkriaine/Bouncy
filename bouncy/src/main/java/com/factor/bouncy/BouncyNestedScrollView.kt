@@ -27,6 +27,7 @@ import androidx.core.widget.EdgeEffectCompat
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.RecyclerView.EdgeEffectFactory
+import com.factor.bouncy.util.Bouncy
 import com.factor.bouncy.util.BouncyEdgeEffect
 import kotlin.math.abs
 import kotlin.math.max
@@ -101,8 +102,29 @@ class BouncyNestedScrollView @JvmOverloads constructor(context: Context, attrs: 
     private var mMaximumVelocity = 0
 
 
+    //bouncy attributes
     var overscrollAnimationSize = 0.5f
     var flingAnimationSize = 0.5f
+
+    var dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
+        set(value)
+        {
+            field = value
+            this.spring.spring = SpringForce()
+                .setFinalPosition(0f)
+                .setDampingRatio(value)
+                .setStiffness(stiffness)
+        }
+
+    var stiffness = SpringForce.STIFFNESS_LOW
+        set(value)
+        {
+            field = value
+            this.spring.spring = SpringForce()
+                .setFinalPosition(0f)
+                .setDampingRatio(dampingRatio)
+                .setStiffness(value)
+        }
 
     /**
      * ID of the active pointer. This is used to retain consistency during
@@ -1894,6 +1916,22 @@ class BouncyNestedScrollView @JvmOverloads constructor(context: Context, attrs: 
             .apply{
                 overscrollAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_overscroll_animation_size, 0.5f)
                 flingAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_fling_animation_size, 0.5f)
+
+                when (getInt(R.styleable.BouncyNestedScrollView_damping_ratio, 0))
+                {
+                    0 -> dampingRatio = Bouncy.DAMPING_RATIO_NO_BOUNCY
+                    1 -> dampingRatio = Bouncy.DAMPING_RATIO_LOW_BOUNCY
+                    2 -> dampingRatio = Bouncy.DAMPING_RATIO_MEDIUM_BOUNCY
+                    3 -> dampingRatio = Bouncy.DAMPING_RATIO_HIGH_BOUNCY
+                }
+
+                when (getInt(R.styleable.BouncyNestedScrollView_stiffness, 1))
+                {
+                    0 -> stiffness = Bouncy.STIFFNESS_VERY_LOW
+                    1 -> stiffness = Bouncy.STIFFNESS_LOW
+                    2 -> stiffness = Bouncy.STIFFNESS_MEDIUM
+                    3 -> stiffness = Bouncy.STIFFNESS_HIGH
+                }
                 recycle()
             }
 

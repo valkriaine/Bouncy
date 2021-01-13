@@ -14,7 +14,7 @@ class Adapter : BouncyRecyclerView.Adapter()
 
     init
     {
-        for (i in 1..50) data.add("data: $i")
+        for (i in 1..100) data.add("data: $i")
     }
 
 
@@ -26,13 +26,13 @@ class Adapter : BouncyRecyclerView.Adapter()
 
     override fun onItemSwipedToStart(viewHolder: ViewHolder?, positionOfItem: Int)
     {
-        data[positionOfItem] += "swiped to left"
+        data[positionOfItem] += "\nswiped to left"
         notifyItemChanged(positionOfItem)
     }
 
     override fun onItemSwipedToEnd(viewHolder: ViewHolder?, positionOfItem: Int)
     {
-        data[positionOfItem] += "swiped to right"
+        data[positionOfItem] += "\nswiped to right"
         notifyItemChanged(positionOfItem)
     }
 

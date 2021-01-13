@@ -7,11 +7,15 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-<com.factor.bouncy.BouncyRecyclerView
-        android:id="@+id/rc"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:allow_item_swipe="true"
-        app:allow_drag_reorder="true"/>
+    <com.factor.bouncy.BouncyRecyclerView
+            android:id="@+id/rc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:recyclerview_fling_animation_size="0.5"
+            app:recyclerview_overscroll_animation_size="0.5"
+            app:recyclerview_damping_ratio="DAMPING_RATIO_NO_BOUNCY"
+            app:recyclerview_stiffness="STIFFNESS_LOW"
+            app:allow_item_swipe="true"
+            app:allow_drag_reorder="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,10 +8,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.factor.bouncy.util.BouncyViewHolder
-import com.factor.bouncy.util.DragDropAdapter
-import com.factor.bouncy.util.DragDropCallBack
-import com.factor.bouncy.util.OnOverPullListener
+import com.factor.bouncy.util.*
 
 
 @Suppress("unused")
@@ -19,11 +16,32 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
 {
     private lateinit var callBack: DragDropCallBack
 
-    private var onOverPullListener: OnOverPullListener? = null
+    var onOverPullListener: OnOverPullListener? = null
 
     var overscrollAnimationSize = 0.5f
 
     var flingAnimationSize = 0.5f
+
+    var dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
+        set(value)
+        {
+            field = value
+            this.spring.spring = SpringForce()
+                .setFinalPosition(0f)
+                .setDampingRatio(value)
+                .setStiffness(stiffness)
+        }
+
+
+    var stiffness = SpringForce.STIFFNESS_LOW
+        set(value)
+        {
+            field = value
+            this.spring.spring = SpringForce()
+                .setFinalPosition(0f)
+                .setDampingRatio(dampingRatio)
+                .setStiffness(value)
+        }
 
     @Suppress("MemberVisibilityCanBePrivate")
     var longPressDragEnabled = false
@@ -49,10 +67,6 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                 .setStiffness(SpringForce.STIFFNESS_LOW)
         )
 
-    fun addOnOverPulledListener(onOverPullListener: OnOverPullListener)
-    {
-        this.onOverPullListener = onOverPullListener
-    }
 
     override fun setAdapter(adapter: RecyclerView.Adapter<*>?)
     {
@@ -78,17 +92,29 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         //read attributes
         context.theme.obtainStyledAttributes(attrs, R.styleable.BouncyRecyclerView, 0, 0)
             .apply{
-                try {
-                    overscrollAnimationSize = getFloat(R.styleable.BouncyRecyclerView_recyclerview_overscroll_animation_size, 0.5f)
-                    flingAnimationSize = getFloat(R.styleable.BouncyRecyclerView_recyclerview_fling_animation_size, 0.5f)
-                    longPressDragEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_drag_reorder, false)
-                    itemSwipeEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_item_swipe, false)
-                }
-                finally
+                longPressDragEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_drag_reorder, false)
+                itemSwipeEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_item_swipe, false)
+
+                overscrollAnimationSize = getFloat(R.styleable.BouncyRecyclerView_recyclerview_overscroll_animation_size, 0.5f)
+                flingAnimationSize = getFloat(R.styleable.BouncyRecyclerView_recyclerview_fling_animation_size, 0.5f)
+
+                when (getInt(R.styleable.BouncyRecyclerView_recyclerview_damping_ratio, 0))
                 {
-                    recycle()
+                    0 -> dampingRatio = Bouncy.DAMPING_RATIO_NO_BOUNCY
+                    1 -> dampingRatio = Bouncy.DAMPING_RATIO_LOW_BOUNCY
+                    2 -> dampingRatio = Bouncy.DAMPING_RATIO_MEDIUM_BOUNCY
+                    3 -> dampingRatio = Bouncy.DAMPING_RATIO_HIGH_BOUNCY
                 }
+                when (getInt(R.styleable.BouncyRecyclerView_recyclerview_stiffness, 1))
+                {
+                    0 -> stiffness = Bouncy.STIFFNESS_VERY_LOW
+                    1 -> stiffness = Bouncy.STIFFNESS_LOW
+                    2 -> stiffness = Bouncy.STIFFNESS_MEDIUM
+                    3 -> stiffness = Bouncy.STIFFNESS_HIGH
+                }
+                recycle()
             }
+
 
         val rc = this
 
@@ -117,20 +143,12 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
 
                     private fun onPullAnimation(deltaDistance: Float)
                     {
-                        var delta = 0f
 
-
-
-                        /* honestly I have no idea why enabling gestures affects the direction that edge effect senses
-                        ** but for now this is the work around to prevent the spring from animating to the opposite direction
-                        */
-
-
+                        val delta: Float =
                             if (direction == DIRECTION_BOTTOM)
-                                delta = -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                            else if (direction != DIRECTION_BOTTOM)
-                                delta = 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-
+                                -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                            else
+                                1 * recyclerView.width * deltaDistance * overscrollAnimationSize
 
                         spring.cancel()
                         rc.translationY += delta
@@ -150,10 +168,6 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                     override fun onAbsorb(velocity: Int)
                     {
                         super.onAbsorb(velocity)
-
-                        /* honestly I have no idea why enabling gestures affects the direction that edge effect senses
-                        ** but for now this is the work around to prevent the spring from animating to the opposite direction
-                         */
 
                         val v: Float = if (direction == DIRECTION_BOTTOM)
                             -1 * velocity * flingAnimationSize
