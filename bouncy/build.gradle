@@ -4,43 +4,44 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
 
+def libraryGroupId = 'com.factor'
+def libraryArtifactId = 'bouncy'
+def libraryVersion = '1.0'
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = libraryGroupId
+                artifactId = libraryArtifactId
+                version = libraryVersion
+            }
+        }
+    }
+}
+
+
 bintray {
     user = 'valkriaine'
     key = 'f1f7a41c1fd31b7dca617842e31c660b61fc814d'
-    publications = ['MyPublication']
+    publications = ['release']
+    publish = true
+    override = true
+
     pkg {
         repo = 'factor'
-        name = 'com.factor.bouncy'
+        name = libraryArtifactId
         userOrg = 'valkriaine'
         licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/Valkriaine/bouncy'
+        vcsUrl = 'https://github.com/Valkriaine/bouncy.git'
+        publicDownloadNumbers = true
         version {
             name = '1.0'
             desc = '1.0 release'
             released  = new Date()
             vcsTag = '1.0'
-        }
-    }
-}
-
-publishing {
-    publications {
-        MyPublication(MavenPublication) {
-            // Define this explicitly if using implementation or api configurations
-            pom.withXml {
-                def dependenciesNode = asNode()['dependencies'][0 as String] ?: asNode().appendNode('dependencies')
-
-                // Iterate over the implementation dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.implementation.allDependencies.each {
-                    // Ensure dependencies such as fileTree are not included.
-                    if (it.name != 'unspecified') {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', it.group)
-                        dependencyNode.appendNode('artifactId', it.name)
-                        dependencyNode.appendNode('version', it.version)
-                    }
-                }
-            }
         }
     }
 }
