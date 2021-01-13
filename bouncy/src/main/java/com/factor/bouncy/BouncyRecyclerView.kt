@@ -72,6 +72,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         for (i in 0 until childCount) action(getChildViewHolder(getChildAt(i)) as T)
     }
 
+
     init {
 
         //read attributes
@@ -119,25 +120,26 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                         var delta = 0f
 
 
+
                         /* honestly I have no idea why enabling gestures affects the direction that edge effect senses
                         ** but for now this is the work around to prevent the spring from animating to the opposite direction
-                         */
-                        if (!longPressDragEnabled && !itemSwipeEnabled)
+                        */
+
+                        if (itemSwipeEnabled)
                         {
-                            when
-                            {
-                                direction == DIRECTION_BOTTOM -> delta = -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                                direction != DIRECTION_BOTTOM -> delta = 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                            }
+                            if (direction == DIRECTION_BOTTOM)
+                                delta = 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                            else if (direction != DIRECTION_BOTTOM)
+                                delta = -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
                         }
                         else
                         {
-                            when
-                            {
-                                direction == DIRECTION_BOTTOM -> delta = 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                                direction != DIRECTION_BOTTOM -> delta = -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                            }
+                            if (direction == DIRECTION_BOTTOM)
+                                delta = -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                            else if (direction != DIRECTION_BOTTOM)
+                                delta = 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
                         }
+
                         spring.cancel()
                         rc.translationY += delta
 
@@ -160,17 +162,22 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                         /* honestly I have no idea why enabling gestures affects the direction that edge effect senses
                         ** but for now this is the work around to prevent the spring from animating to the opposite direction
                          */
-                        val v: Float =
-                            if (!longPressDragEnabled && !itemSwipeEnabled)
-                                if (direction == DIRECTION_BOTTOM)
-                                     -1 * velocity * flingAnimationSize
-                                else
-                                    1 * velocity * flingAnimationSize
+
+                        val v: Float = if (longPressDragEnabled)
+                        {
+                            if (direction == DIRECTION_BOTTOM)
+                                1 * velocity * flingAnimationSize
                             else
-                                if (direction == DIRECTION_BOTTOM)
-                                    1 * velocity * flingAnimationSize
-                                else
-                                    -1 * velocity * flingAnimationSize
+                                -1 * velocity * flingAnimationSize
+                        }
+                        else
+                        {
+                            if (direction == DIRECTION_BOTTOM)
+                                -1 * velocity * flingAnimationSize
+                            else
+                                1 * velocity * flingAnimationSize
+                        }
+
 
                         spring.setStartVelocity(v).start()
 

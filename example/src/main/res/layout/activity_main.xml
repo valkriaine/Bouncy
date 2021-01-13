@@ -11,7 +11,7 @@
         android:id="@+id/rc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:allow_drag_reorder="true"
-        app:allow_item_swipe="true"/>
+        app:allow_item_swipe="true"
+        app:allow_drag_reorder="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
