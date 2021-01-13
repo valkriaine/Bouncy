@@ -79,8 +79,8 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         context.theme.obtainStyledAttributes(attrs, R.styleable.BouncyRecyclerView, 0, 0)
             .apply{
                 try {
-                    overscrollAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_overscroll_bounce_animation_size, 0.5f)
-                    flingAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_fling_bounce_animation_size, 0.5f)
+                    overscrollAnimationSize = getFloat(R.styleable.BouncyRecyclerView_recyclerview_overscroll_animation_size, 0.5f)
+                    flingAnimationSize = getFloat(R.styleable.BouncyRecyclerView_recyclerview_fling_animation_size, 0.5f)
                     longPressDragEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_drag_reorder, false)
                     itemSwipeEnabled = getBoolean(R.styleable.BouncyRecyclerView_allow_item_swipe, false)
                 }
@@ -125,20 +125,12 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                         ** but for now this is the work around to prevent the spring from animating to the opposite direction
                         */
 
-                        if (itemSwipeEnabled)
-                        {
-                            if (direction == DIRECTION_BOTTOM)
-                                delta = 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                            else if (direction != DIRECTION_BOTTOM)
-                                delta = -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                        }
-                        else
-                        {
+
                             if (direction == DIRECTION_BOTTOM)
                                 delta = -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
                             else if (direction != DIRECTION_BOTTOM)
                                 delta = 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                        }
+
 
                         spring.cancel()
                         rc.translationY += delta
@@ -163,20 +155,10 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                         ** but for now this is the work around to prevent the spring from animating to the opposite direction
                          */
 
-                        val v: Float = if (longPressDragEnabled)
-                        {
-                            if (direction == DIRECTION_BOTTOM)
-                                1 * velocity * flingAnimationSize
-                            else
-                                -1 * velocity * flingAnimationSize
-                        }
+                        val v: Float = if (direction == DIRECTION_BOTTOM)
+                            -1 * velocity * flingAnimationSize
                         else
-                        {
-                            if (direction == DIRECTION_BOTTOM)
-                                -1 * velocity * flingAnimationSize
-                            else
-                                1 * velocity * flingAnimationSize
-                        }
+                            1 * velocity * flingAnimationSize
 
 
                         spring.setStartVelocity(v).start()

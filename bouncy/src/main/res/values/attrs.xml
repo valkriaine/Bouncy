@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <declare-styleable name="BouncyNestedScrollView">
-        <attr name="overscroll_bounce_animation_size" format="float"/>
-        <attr name="fling_bounce_animation_size" format="float"/>
+        <attr name="overscroll_animation_size" format="float"/>
+        <attr name="fling_animation_size" format="float"/>
     </declare-styleable>
 
-    <declare-styleable name="BouncyRecyclerView" parent="BouncyNestedScrollView">
-
+    <declare-styleable name="BouncyRecyclerView">
+        <attr name="recyclerview_overscroll_animation_size" format="float"/>
+        <attr name="recyclerview_fling_animation_size" format="float"/>
         <attr name="allow_drag_reorder" format="boolean"/>
         <attr name="allow_item_swipe" format="boolean"/>
     </declare-styleable>

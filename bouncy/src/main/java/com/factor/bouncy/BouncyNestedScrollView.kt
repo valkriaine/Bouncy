@@ -1892,8 +1892,8 @@ class BouncyNestedScrollView @JvmOverloads constructor(context: Context, attrs: 
         }
         context.theme.obtainStyledAttributes(attrs, R.styleable.BouncyNestedScrollView, 0, 0)
             .apply{
-                overscrollAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_overscroll_bounce_animation_size, 0.5f)
-                flingAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_fling_bounce_animation_size, 0.5f)
+                overscrollAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_overscroll_animation_size, 0.5f)
+                flingAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_fling_animation_size, 0.5f)
                 recycle()
             }
 
