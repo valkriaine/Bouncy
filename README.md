@@ -1,6 +1,6 @@
 # Bouncy 
 
-[ ![Download](https://api.bintray.com/packages/valkriaine/factor/com.factor.bouncy/images/download.svg?version=1.0) ](https://bintray.com/valkriaine/factor/com.factor.bouncy/1.0/link)
+[ ![Download](https://api.bintray.com/packages/valkriaine/factor/bouncy/images/download.svg?version=1.0) ](https://bintray.com/valkriaine/factor/bouncy/1.0/link)
 
 Add IOS-like overscroll animation to your scrolling views. 
 
@@ -12,7 +12,7 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 In your app module build.gradle:
 ```
    dependencies {
-        implementation 'library:bouncy:1.0'
+        implementation 'com.factor:bouncy:1.0'
    }
  ```
 
