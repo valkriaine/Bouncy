@@ -42,7 +42,9 @@ Use as normal NestedScrollView. Place it in your layout:
 ```xml
 <com.factor.bouncy.BouncyNestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:fling_bounce_animation_size=".5"
+        app:overscroll_bounce_animation_size=".5">
 
     <LinearLayout
             android:orientation="vertical"
@@ -57,6 +59,12 @@ Use as normal NestedScrollView. Place it in your layout:
 
 </com.factor.bouncy.BouncyNestedScrollView>
 ```
+
+```fling_bounce_animation_size``` specifies the magnitude of overscroll effect for fling, default is 0.5 if no value is given. 
+
+```overscroll_bounce_animation_size``` specifies the magnitude of overscroll effect for drag, default is 0.5 if no value is given. 
+
+Strongly suggest to keep both values lower than 5.
 
 # BouncyRecyclerView
 
@@ -162,3 +170,9 @@ public class MyAdapter extends BouncyRecyclerView.Adapter
     }
 }
 ```
+
+# My other projects
+
+[Factor Launcher](https://github.com/Valkriaine/Factor_Launcher_Reboot) - A Windows Phone inspired launcher with some modern touch
+[Mutify](https://github.com/Valkriaine/Mutify) - Automatically turn on do-not-disturb based on where you are
+
