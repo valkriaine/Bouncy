@@ -9,16 +9,15 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
 # Add Bouncy to your project
 
-In your project's build.gradle:
-
-```
-allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
- ```
+In your project build.gradle:
+```gradle
+    allprojects {
+        repositories {
+            ...
+            maven { url "https://jitpack.io" }
+        }
+   }
+  ```
  
 In your app module build.gradle:
 ```
