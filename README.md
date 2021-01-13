@@ -20,7 +20,7 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
 # BouncyNestedScrollView
 
-NestedScrollView with bouncy overscroll effect, modified from original NestedScrollView
+NestedScrollView with bouncy overscroll effect, achieved by overriding the default EdgeEffect
 
 <img src="./images/BouncyNestedScrollViewDemo.gif"/> <img src="./images/FactorLauncherSettingsScreen.gif"/>
 
