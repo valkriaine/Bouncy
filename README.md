@@ -90,6 +90,7 @@ set up layout manager and adapter. Theoratically supports any LayoutManager:
 ```allow_drag_reorder``` and ```allow_item_swipe``` are set to false by default. If you would like to enable these features, simply set them to true.
 
 
+**Drag & drop does not work out of the box. 
 
 For drag & drop or swipe gestures to work, make your adapter extend ```BouncyRecyclerView.Adapter``` and add constructor matching parent.
 (If your adapter does not extend BouncyRecyclerView.Adapter, BouncyRecyclerView will simply disable the gestures)
