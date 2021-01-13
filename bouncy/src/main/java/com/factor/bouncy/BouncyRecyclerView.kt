@@ -118,8 +118,8 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                     {
                         val delta =
                             if (direction == DIRECTION_BOTTOM)
-                                -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                            else 1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                                1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                            else -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
                         spring.cancel()
                         rc.translationY += delta
 
@@ -139,8 +139,8 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                     {
                         super.onAbsorb(velocity)
                         val v =
-                            if (direction == DIRECTION_BOTTOM) -1 * velocity * flingAnimationSize
-                            else 1 * velocity * flingAnimationSize
+                            if (direction == DIRECTION_BOTTOM) 1 * velocity * flingAnimationSize
+                            else -1 * velocity * flingAnimationSize
                         spring.setStartVelocity(v).start()
 
                         forEachVisibleHolder{holder: ViewHolder? -> if (holder is BouncyViewHolder)holder.onAbsorb(velocity)}
