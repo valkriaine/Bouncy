@@ -32,8 +32,8 @@ Use as normal NestedScrollView. Place it in your layout:
 <com.factor.bouncy.BouncyNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:fling_bounce_animation_size=".5"
-        app:overscroll_bounce_animation_size=".5">
+        app:fling_animation_size=".7"
+        app:overscroll_animation_size=".7">
 
     <LinearLayout
             android:orientation="vertical"
@@ -49,9 +49,9 @@ Use as normal NestedScrollView. Place it in your layout:
 </com.factor.bouncy.BouncyNestedScrollView>
 ```
 
-```fling_bounce_animation_size``` specifies the magnitude of overscroll effect for fling, default is 0.5 if no value is given. 
+```fling_animation_size``` specifies the magnitude of overscroll effect for fling, default is 0.5 if no value is given. 
 
-```overscroll_bounce_animation_size``` specifies the magnitude of overscroll effect for drag, default is 0.5 if no value is given. 
+```overscroll_animation_size``` specifies the magnitude of overscroll effect for drag, default is 0.5 if no value is given. 
 
 Strongly suggest to keep both values lower than 5.
 
@@ -70,8 +70,8 @@ Use as normal RecyclerView. Place it in your layout:
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:fling_bounce_animation_size=".5"
-        app:overscroll_bounce_animation_size=".5"
+        app:recyclerview_fling_animation_size=".7"
+        app:recyclerview_overscroll_animation_size=".7"
         app:allow_drag_reorder="true"
         app:allow_item_swipe="false"/>
 ```
@@ -83,8 +83,8 @@ set up layout manager and adapter. Theoratically supports any LayoutManager:
    //recycler_view.setLayoutManager(new GridLayoutManager(context, 3));
 ```
 
-```fling_bounce_animation_size``` specifies the magnitude of overscroll effect for fling, default is 0.5 if no value is given
-```overscroll_bounce_animation_size``` specifies the magnitude of overscroll effect for drag, default is 0.5 if no value is given
+```recyclerview_fling_animation_size``` specifies the magnitude of overscroll effect for fling, default is 0.5 if no value is given
+```recyclerview_overscroll_animation_size``` specifies the magnitude of overscroll effect for drag, default is 0.5 if no value is given
 
 ```allow_drag_reorder``` and ```allow_item_swipe``` are set to false by default. If you would like to enable these features, simply set them to true.
 
