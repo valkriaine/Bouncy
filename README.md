@@ -9,24 +9,14 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
 # Add Bouncy to your project
 
-In your project build.gradle:
-```gradle
-    allprojects {
-        repositories {
-            ...
-            maven { url "https://jitpack.io" }
-        }
-   }
-  ```
- 
-In your app module build.gradle:
+ In your app module build.gradle:
 ```
    dependencies {
         implementation 'androidx.recyclerview:recyclerview:1.1.0'
-        implementation 'com.github.Valkriaine:bouncy:1.0'   
+        implementation 'com.factor:bouncy:1.0'
    }
  ```
-
+(must include androidx.recyclerview as well for BouncyRecyclerView to work)
 
 
 # BouncyNestedScrollView
