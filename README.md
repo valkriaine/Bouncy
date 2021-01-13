@@ -1,7 +1,6 @@
 # Bouncy 
 
-[ ![Download](https://api.bintray.com/packages/valkriaine/factor/bouncy/images/download.svg?version=1.0) ](https://bintray.com/valkriaine/factor/bouncy/1.0/link)
-[![](https://jitpack.io/v/Valkriaine/bouncy.svg)](https://jitpack.io/#Valkriaine/bouncy)
+[ ![Download](https://api.bintray.com/packages/valkriaine/factor/bouncy/images/download.svg?version=1.2) ](https://bintray.com/valkriaine/factor/bouncy/1.2/link)
 
 Add IOS-like overscroll animation to your scrolling views using [SpringAnimation](https://developer.android.com/guide/topics/graphics/spring-animation). 
 
@@ -13,7 +12,7 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 ```
    dependencies {
         implementation 'androidx.recyclerview:recyclerview:1.1.0'
-        implementation 'com.factor:bouncy:1.0'
+        implementation 'com.factor:bouncy:1.2'
    }
  ```
 (androidx.recyclerview is required for BouncyRecyclerView to work)
