@@ -68,7 +68,7 @@ Usage:
 Use as normal RecyclerView. Place it in your layout:
 
 ```xml
-<com.valkriaine.factor.BouncyRecyclerView
+<com.factor.bouncy.BouncyRecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
