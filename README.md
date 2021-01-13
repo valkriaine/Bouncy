@@ -16,7 +16,7 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
         implementation 'com.factor:bouncy:1.0'
    }
  ```
-(must include androidx.recyclerview as well for BouncyRecyclerView to work)
+(androidx.recyclerview is required for BouncyRecyclerView to work)
 
 
 # BouncyNestedScrollView
