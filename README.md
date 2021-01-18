@@ -97,6 +97,15 @@ set up layout manager and adapter. Theoratically supports any LayoutManager:
 
 ```recyclerview_damping_ratio``` and ```recyclerview_stiffness``` please refer to [damping ratio](https://developer.android.com/guide/topics/graphics/spring-animation#damping-ratio) and [stiffness](https://developer.android.com/guide/topics/graphics/spring-animation#stiffness)
 
+Set in code:
+
+```java
+   recycler_view.setFlingAnimationSize(0.3f);
+   recycler_view.setOverscrollAnimationSize(0.3f);
+   recycler_view.setDampingRatio(Bouncy.DAMPING_RATIO_HIGH_BOUNCY);
+   recycler_view.setStiffness(Bouncy.STIFFNESS_HIGH);
+```
+
 A known issue is when customizing spring properties, items close to the edges of the screen may be clipped since the current implementation animates the Y translation of the whole recyclerview. A workaround is to place the ```BouncyRecyclerView``` inside a ```NestedScrollView``` (not necessarily ```BouncyNestedScrollView```):
 
 ```xml
