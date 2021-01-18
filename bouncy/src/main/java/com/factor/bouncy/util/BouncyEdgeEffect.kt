@@ -35,21 +35,20 @@ class BouncyEdgeEffect(context: Context?,
             else 1 * view.width * deltaDistance * overscrollSize
         spring.cancel()
         view.translationY += delta
-
     }
 
     override fun onRelease()
     {
         super.onRelease()
         spring.start()
-
     }
 
     override fun onAbsorb(velocity: Int)
     {
         super.onAbsorb(velocity)
         val v: Float =
-            if (direction == DIRECTION_BOTTOM) -1 * velocity * flingSize
+            if (direction == DIRECTION_BOTTOM)
+                -1 * velocity * flingSize
             else 1 * velocity * flingSize
         spring.setStartVelocity(v).start()
     }

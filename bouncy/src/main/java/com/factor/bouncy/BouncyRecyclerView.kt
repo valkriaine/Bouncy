@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.factor.bouncy.util.*
 
 
-@Suppress("unused")
 class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(context, attrs)
 {
     private lateinit var callBack: DragDropCallBack
@@ -22,6 +21,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
 
     var flingAnimationSize = 0.5f
 
+    @Suppress("MemberVisibilityCanBePrivate")
     var dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
         set(value)
         {
@@ -32,7 +32,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                 .setStiffness(stiffness)
         }
 
-
+    @Suppress("MemberVisibilityCanBePrivate")
     var stiffness = SpringForce.STIFFNESS_LOW
         set(value)
         {
@@ -63,8 +63,8 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         .setSpring(
             SpringForce()
                 .setFinalPosition(0f)
-                .setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY)
-                .setStiffness(SpringForce.STIFFNESS_LOW)
+                .setDampingRatio(dampingRatio)
+                .setStiffness(stiffness)
         )
 
 

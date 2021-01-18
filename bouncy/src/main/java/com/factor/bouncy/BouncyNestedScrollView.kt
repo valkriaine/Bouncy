@@ -15,7 +15,6 @@ import android.util.TypedValue
 import android.view.*
 import android.view.accessibility.AccessibilityEvent
 import android.view.animation.AnimationUtils
-import android.widget.EdgeEffect
 import android.widget.FrameLayout
 import android.widget.OverScroller
 import android.widget.ScrollView
@@ -54,8 +53,8 @@ class BouncyNestedScrollView @JvmOverloads constructor(context: Context, attrs: 
     private var mLastScroll: Long = 0
     private val mTempRect = Rect()
     private var mScroller: OverScroller? = null
-    private var mEdgeGlowTop: EdgeEffect? = null
-    private var mEdgeGlowBottom: EdgeEffect? = null
+    private var mEdgeGlowTop: BouncyEdgeEffect? = null
+    private var mEdgeGlowBottom: BouncyEdgeEffect? = null
 
     /**
      * Position of the last motion event.
@@ -148,8 +147,8 @@ class BouncyNestedScrollView @JvmOverloads constructor(context: Context, attrs: 
         .setSpring(
             SpringForce()
                 .setFinalPosition(0f)
-                .setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY)
-                .setStiffness(SpringForce.STIFFNESS_LOW)
+                .setDampingRatio(dampingRatio)
+                .setStiffness(stiffness)
         )
 
 

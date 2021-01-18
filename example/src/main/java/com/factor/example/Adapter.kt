@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.factor.bouncy.BouncyRecyclerView
 import java.util.*
 
-class Adapter : BouncyRecyclerView.Adapter()
+class Adapter(size : Int) : BouncyRecyclerView.Adapter()
 {
     private val data = ArrayList<String>()
 
     init
     {
-        for (i in 1..100) data.add("data: $i")
+        for (i in 1..size) data.add("data: $i")
     }
 
 

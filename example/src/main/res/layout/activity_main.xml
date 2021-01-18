@@ -7,15 +7,148 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <com.factor.bouncy.BouncyRecyclerView
-            android:id="@+id/rc"
+
+    <com.factor.bouncy.BouncyNestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:recyclerview_fling_animation_size="0.5"
-            app:recyclerview_overscroll_animation_size="0.5"
-            app:recyclerview_damping_ratio="DAMPING_RATIO_NO_BOUNCY"
-            app:recyclerview_stiffness="STIFFNESS_LOW"
-            app:allow_item_swipe="true"
-            app:allow_drag_reorder="true"/>
+            android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#9C27B0"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#03A9F4"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#FF9800"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </com.factor.bouncy.BouncyNestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

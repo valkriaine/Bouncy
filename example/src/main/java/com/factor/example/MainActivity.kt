@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
 
 
-        findViewById<BouncyRecyclerView>(R.id.rc).adapter = Adapter()
-        findViewById<BouncyRecyclerView>(R.id.rc).layoutManager = GridLayoutManager(this, 2)
+        //findViewById<BouncyRecyclerView>(R.id.rc).adapter = Adapter(30)
+        //findViewById<BouncyRecyclerView>(R.id.rc).layoutManager = GridLayoutManager(this, 1)
     }
 }
