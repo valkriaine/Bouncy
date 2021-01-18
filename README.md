@@ -20,9 +20,9 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
 # BouncyNestedScrollView
 
-NestedScrollView with bouncy overscroll effect, currently only supports vertical scrolling. A
+NestedScrollView with bouncy overscroll effect, currently only supports vertical scrolling. 
 
-chieved by overriding the default EdgeEffect
+Achieved by overriding the default EdgeEffect
 
 <img src="./images/BouncyNestedScrollViewDemo.gif"/> <img src="./images/FactorLauncherSettingsScreen.gif"/>
 
