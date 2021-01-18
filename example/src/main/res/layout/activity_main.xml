@@ -8,10 +8,18 @@
         tools:context=".MainActivity">
 
 
+    <com.factor.bouncy.BouncyRecyclerView
+            android:id="@+id/rc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:allow_item_swipe="true"
+            app:allow_drag_reorder="true"/>
+
+    <!--BouncyNestedScrollView-->
+    <!--
     <com.factor.bouncy.BouncyNestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -148,7 +156,7 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
     </com.factor.bouncy.BouncyNestedScrollView>
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

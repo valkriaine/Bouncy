@@ -48,7 +48,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         set(value)
         {
             field = value
-            if (adapter is DragDropAdapter) callBack.setDragEnabled(value)
+            if (adapter is DragDropAdapter<*>) callBack.setDragEnabled(value)
         }
 
     @Suppress("MemberVisibilityCanBePrivate")
@@ -56,7 +56,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         set(value)
         {
             field = value
-            if (adapter is DragDropAdapter) callBack.setSwipeEnabled(value)
+            if (adapter is DragDropAdapter<*>) callBack.setSwipeEnabled(value)
         }
 
     val spring: SpringAnimation = SpringAnimation(this, SpringAnimation.TRANSLATION_Y)
@@ -71,7 +71,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
     override fun setAdapter(adapter: RecyclerView.Adapter<*>?)
     {
         super.setAdapter(adapter)
-        if (adapter is DragDropAdapter)
+        if (adapter is DragDropAdapter<*>)
         {
             callBack = DragDropCallBack(adapter, longPressDragEnabled, itemSwipeEnabled)
             val touchHelper = ItemTouchHelper(callBack)
@@ -188,5 +188,5 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         }
     }
 
-    abstract class Adapter<T:ViewHolder>: RecyclerView.Adapter<T>(), DragDropAdapter
+    abstract class Adapter<T:ViewHolder>: RecyclerView.Adapter<T>(), DragDropAdapter<T>
 }

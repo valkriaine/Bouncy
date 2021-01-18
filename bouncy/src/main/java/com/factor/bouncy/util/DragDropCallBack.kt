@@ -22,7 +22,7 @@ class DragDropCallBack(private val adapter: RecyclerView.Adapter<*>,
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, i: Int)
     {
-        if (isItemViewSwipeEnabled && adapter is DragDropAdapter)
+        if (isItemViewSwipeEnabled && adapter is DragDropAdapter<*>)
         {
             if (i == ItemTouchHelper.START)
                 adapter.onItemSwipedToStart(viewHolder, viewHolder.adapterPosition)
@@ -40,7 +40,7 @@ class DragDropCallBack(private val adapter: RecyclerView.Adapter<*>,
 
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean
     {
-        return if (isLongPressDragEnabled && adapter is DragDropAdapter)
+        return if (isLongPressDragEnabled && adapter is DragDropAdapter<*>)
         {
             adapter.onItemMoved(viewHolder.adapterPosition, target.adapterPosition)
             true
@@ -51,7 +51,7 @@ class DragDropCallBack(private val adapter: RecyclerView.Adapter<*>,
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int)
     {
-        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE && adapter is DragDropAdapter)
+        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE && adapter is DragDropAdapter<*>)
         {
             adapter.onItemSelected(viewHolder)
         }
@@ -61,7 +61,7 @@ class DragDropCallBack(private val adapter: RecyclerView.Adapter<*>,
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder)
     {
         super.clearView(recyclerView, viewHolder)
-        if (adapter is DragDropAdapter)
+        if (adapter is DragDropAdapter<*>)
             adapter.onItemReleased(viewHolder)
     }
 
