@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.factor.bouncy.BouncyRecyclerView
 import java.util.*
 
-class Adapter(size : Int) : BouncyRecyclerView.Adapter()
+
+class Adapter(size : Int) : BouncyRecyclerView.Adapter<Adapter.MyViewHolder>()
 {
+
     private val data = ArrayList<String>()
 
     init
@@ -46,14 +48,14 @@ class Adapter(size : Int) : BouncyRecyclerView.Adapter()
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
     {
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false))
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int)
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int)
     {
-        (holder as MyViewHolder).bindData(data[position])
+        holder.bindData(data[position])
     }
 
     override fun getItemCount(): Int
@@ -61,7 +63,8 @@ class Adapter(size : Int) : BouncyRecyclerView.Adapter()
         return data.size
     }
 
-    internal class MyViewHolder(itemView: View) : ViewHolder(itemView)
+
+    class MyViewHolder(itemView: View) : ViewHolder(itemView)
     {
         fun bindData(data : String)
         {

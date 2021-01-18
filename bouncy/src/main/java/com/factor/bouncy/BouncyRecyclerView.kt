@@ -71,7 +71,6 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
     override fun setAdapter(adapter: RecyclerView.Adapter<*>?)
     {
         super.setAdapter(adapter)
-
         if (adapter is DragDropAdapter)
         {
             callBack = DragDropCallBack(adapter, longPressDragEnabled, itemSwipeEnabled)
@@ -79,7 +78,6 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
             touchHelper.attachToRecyclerView(this)
         }
     }
-
 
     inline fun <reified T : ViewHolder> RecyclerView.forEachVisibleHolder(action: (T) -> Unit)
     {
@@ -190,5 +188,5 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         }
     }
 
-    abstract class Adapter: RecyclerView.Adapter<ViewHolder>(), DragDropAdapter
+    abstract class Adapter<T:ViewHolder>: RecyclerView.Adapter<T>(), DragDropAdapter
 }
