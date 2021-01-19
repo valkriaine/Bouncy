@@ -1,6 +1,6 @@
 # Bouncy 
 
-[ ![Download](https://api.bintray.com/packages/valkriaine/factor/bouncy/images/download.svg?version=1.5) ](https://bintray.com/valkriaine/factor/bouncy/1.5/link)
+[ ![Download](https://api.bintray.com/packages/valkriaine/factor/bouncy/images/download.svg?version=1.6) ](https://bintray.com/valkriaine/factor/bouncy/1.6/link)
 
 Add IOS-like overscroll animation to your scrolling views using [SpringAnimation](https://developer.android.com/guide/topics/graphics/spring-animation). 
 
@@ -12,7 +12,7 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 ```
    dependencies {
         implementation 'androidx.recyclerview:recyclerview:1.1.0'
-        implementation 'com.factor:bouncy:1.5'
+        implementation 'com.factor:bouncy:1.6'
    }
  ```
 (androidx.recyclerview is required for BouncyRecyclerView to work)
@@ -74,6 +74,8 @@ Use as normal RecyclerView. Place it in your layout:
         android:layout_height="match_parent"
         app:recyclerview_fling_animation_size=".7"
         app:recyclerview_overscroll_animation_size=".7"
+        app:recyclerview_damping_ratio="DAMPING_RATIO_LOW_BOUNCY"
+        app:recyclerview_stiffness="STIFFNESS_MEDIUM"
         app:allow_drag_reorder="true"
         app:allow_item_swipe="false"/>
 ```
@@ -91,6 +93,38 @@ set up layout manager and adapter. Theoratically supports any LayoutManager:
 
 ```allow_drag_reorder``` and ```allow_item_swipe``` are set to false by default. If you would like to enable these features, simply set them to true.
 
+1.6 version supports customizing the spring animation proerties. 
+
+```recyclerview_damping_ratio``` and ```recyclerview_stiffness``` please refer to [damping ratio](https://developer.android.com/guide/topics/graphics/spring-animation#damping-ratio) and [stiffness](https://developer.android.com/guide/topics/graphics/spring-animation#stiffness)
+
+Set in code:
+
+```java
+   recycler_view.setFlingAnimationSize(0.3f);
+   recycler_view.setOverscrollAnimationSize(0.3f);
+   recycler_view.setDampingRatio(Bouncy.DAMPING_RATIO_HIGH_BOUNCY);
+   recycler_view.setStiffness(Bouncy.STIFFNESS_HIGH);
+```
+
+A known issue is when customizing spring properties, items close to the edges of the screen may be clipped since the current implementation animates the Y translation of the whole recyclerview. A workaround is to place the ```BouncyRecyclerView``` inside a ```NestedScrollView``` (not necessarily ```BouncyNestedScrollView```):
+
+```xml
+<androidx.core.widget.NestedScrollView 
+            android:layout_width="match_parent" 
+            android:layout_height="match_parent">
+
+        <!--setting damping ratio to HIGH_BOUNCY may result in items being clipped near the edges-->
+        <com.factor.bouncy.BouncyRecyclerView
+                android:id="@+id/rc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:recyclerview_damping_ratio="DAMPING_RATIO_HIGH_BOUNCY"
+                app:recyclerview_stiffness="STIFFNESS_LOW"
+                app:allow_drag_reorder="true"
+                app:allow_item_swipe="true"/>
+        
+    </androidx.core.widget.NestedScrollView>
+```
 
 **Drag & drop does not work out of the box. 
 
@@ -164,6 +198,7 @@ public class MyAdapter extends BouncyRecyclerView.Adapter
     }
 }
 ```
+Also refer to the [Kotlin example](https://github.com/Valkriaine/Bouncy/blob/master/example/src/main/java/com/factor/example/MyAdapter.kt)
 
 # My other projects
 
