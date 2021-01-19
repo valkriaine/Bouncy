@@ -1499,20 +1499,22 @@ class BouncyNestedScrollView @JvmOverloads constructor(context: Context, attrs: 
     }
 
 
-    override fun onRequestFocusInDescendants(direction: Int, previouslyFocusedRect: Rect): Boolean
+    override fun onRequestFocusInDescendants(direction: Int, previouslyFocusedRect: Rect?): Boolean
     {
-        // convert from forward / backward notation to up / down / left / right
-        // (ugh).
-        var mDirection = direction
+        if (previouslyFocusedRect != null)
+        {
+            var mDirection = direction
 
-        if (mDirection == FOCUS_FORWARD)
-            mDirection = FOCUS_DOWN
-        else if (direction == FOCUS_BACKWARD)
-            mDirection = FOCUS_UP
+            if (mDirection == FOCUS_FORWARD)
+                mDirection = FOCUS_DOWN
+            else if (direction == FOCUS_BACKWARD)
+                mDirection = FOCUS_UP
 
-        val nextFocus = FocusFinder.getInstance().findNextFocusFromRect(this, previouslyFocusedRect, mDirection) ?: return false
-        return if (isOffScreen(nextFocus)) false
-        else nextFocus.requestFocus(mDirection, previouslyFocusedRect)
+            val nextFocus = FocusFinder.getInstance().findNextFocusFromRect(this, previouslyFocusedRect, mDirection) ?: return false
+            return if (isOffScreen(nextFocus)) false
+            else nextFocus.requestFocus(mDirection, previouslyFocusedRect)
+        }
+        return false
     }
 
     override fun requestChildRectangleOnScreen(child: View, rectangle: Rect, immediate: Boolean): Boolean
