@@ -93,7 +93,7 @@ set up layout manager and adapter. Theoratically supports any LayoutManager:
 
 ```allow_drag_reorder``` and ```allow_item_swipe``` are set to false by default. If you would like to enable these features, simply set them to true.
 
-1.6 version supports customizing the spring animation proerties. 
+Spring customization (Bouncy 1.6 and above)
 
 ```recyclerview_damping_ratio``` and ```recyclerview_stiffness``` please refer to [damping ratio](https://developer.android.com/guide/topics/graphics/spring-animation#damping-ratio) and [stiffness](https://developer.android.com/guide/topics/graphics/spring-animation#stiffness)
 
