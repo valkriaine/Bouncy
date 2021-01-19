@@ -26,7 +26,7 @@ Achieved by overriding the default EdgeEffect
 
 <img src="./images/BouncyNestedScrollViewDemo.gif"/> <img src="./images/FactorLauncherSettingsScreen.gif"/>
 
-Usage:
+## Usage:
 
 Use as normal NestedScrollView. Place it in your layout:
 
@@ -63,7 +63,7 @@ BouncyRecyclerView adds overscroll effect to RecyclerView and supports drag & dr
 
 <img src="./images/BouncyRecyclerViewDemo.gif"/> <img src="./images/reorder_and_swipe.gif"/>
 
-Usage:
+## Usage:
 
 Use as normal RecyclerView. Place it in your layout:
 
@@ -87,13 +87,15 @@ set up layout manager and adapter. Theoratically supports any LayoutManager:
    //recycler_view.setLayoutManager(new GridLayoutManager(context, 3));
 ```
 
+## Customization
+
 ```recyclerview_fling_animation_size``` specifies the magnitude of overscroll effect for fling, default is 0.5 if no value is given
 
 ```recyclerview_overscroll_animation_size``` specifies the magnitude of overscroll effect for drag, default is 0.5 if no value is given
 
 ```allow_drag_reorder``` and ```allow_item_swipe``` are set to false by default. If you would like to enable these features, simply set them to true.
 
-Spring customization (Bouncy 1.6 and above)
+### Spring customization (Bouncy 1.6 and above)
 
 ```recyclerview_damping_ratio``` and ```recyclerview_stiffness``` please refer to [damping ratio](https://developer.android.com/guide/topics/graphics/spring-animation#damping-ratio) and [stiffness](https://developer.android.com/guide/topics/graphics/spring-animation#stiffness)
 
@@ -126,7 +128,9 @@ A known issue is when customizing spring properties, items close to the edges of
     </androidx.core.widget.NestedScrollView>
 ```
 
-**Drag & drop does not work out of the box. 
+## Drag & drop 
+
+Drag & drop does not work out of the box. 
 
 For drag & drop or swipe gestures to work, make your adapter extend ```BouncyRecyclerView.Adapter``` and add constructor matching parent.
 (If your adapter does not extend BouncyRecyclerView.Adapter, BouncyRecyclerView will simply disable the gestures)
