@@ -21,6 +21,14 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
 
     var flingAnimationSize = 0.5f
 
+    var orientation : Int? = 1
+        set(value)
+        {
+            field = value
+            setupDirection(value)
+
+        }
+
     @Suppress("MemberVisibilityCanBePrivate")
     var dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
         set(value)
@@ -59,7 +67,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
             if (adapter is DragDropAdapter<*>) callBack.setSwipeEnabled(value)
         }
 
-    val spring: SpringAnimation = SpringAnimation(this, SpringAnimation.TRANSLATION_Y)
+    var spring: SpringAnimation = SpringAnimation(this, SpringAnimation.TRANSLATION_Y)
         .setSpring(
             SpringForce()
                 .setFinalPosition(0f)
@@ -84,6 +92,34 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
         for (i in 0 until childCount) action(getChildViewHolder(getChildAt(i)) as T)
     }
 
+
+    override fun setLayoutManager(layout: LayoutManager?)
+    {
+        super.setLayoutManager(layout)
+        orientation = layout?.layoutDirection
+        setupDirection(orientation)
+    }
+
+
+
+    private fun setupDirection(orientation : Int?)
+    {
+
+        when (orientation)
+        {
+            HORIZONTAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_X)
+                .setSpring(SpringForce()
+                        .setFinalPosition(0f)
+                        .setDampingRatio(dampingRatio)
+                        .setStiffness(stiffness))
+
+            VERTICAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_Y)
+                .setSpring(SpringForce()
+                        .setFinalPosition(0f)
+                        .setDampingRatio(dampingRatio)
+                        .setStiffness(stiffness))
+        }
+    }
 
     init {
 
@@ -116,6 +152,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
 
         val rc = this
 
+
         //create edge effect
         this.edgeEffectFactory = object : RecyclerView.EdgeEffectFactory()
         {
@@ -142,14 +179,28 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                     private fun onPullAnimation(deltaDistance: Float)
                     {
 
-                        val delta: Float =
-                            if (direction == DIRECTION_BOTTOM)
-                                -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
-                            else
-                                1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                        if (orientation == VERTICAL)
+                        {
+                            val delta: Float =
+                                if (direction == DIRECTION_BOTTOM)
+                                    -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                                else
+                                    1 * recyclerView.width * deltaDistance * overscrollAnimationSize
 
-                        spring.cancel()
-                        rc.translationY += delta
+                            rc.translationY += delta
+                            spring.cancel()
+                        }
+                        else
+                        {
+                            val delta: Float =
+                                if (direction == DIRECTION_RIGHT)
+                                    -1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+                                else
+                                    1 * recyclerView.width * deltaDistance * overscrollAnimationSize
+
+                            rc.translationX += delta
+                            spring.cancel()
+                        }
 
                         forEachVisibleHolder{holder: ViewHolder? -> if (holder is BouncyViewHolder)holder.onPulled(deltaDistance)}
                     }
@@ -167,13 +218,28 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                     {
                         super.onAbsorb(velocity)
 
-                        val v: Float = if (direction == DIRECTION_BOTTOM)
-                            -1 * velocity * flingAnimationSize
+                        if (orientation == VERTICAL)
+                        {
+                            val v: Float = if (direction == DIRECTION_BOTTOM)
+                                -1 * velocity * flingAnimationSize
+                            else
+                                1 * velocity * flingAnimationSize
+
+
+                            spring.setStartVelocity(v).start()
+                        }
                         else
-                            1 * velocity * flingAnimationSize
+                        {
+                            val v: Float = if (direction == DIRECTION_RIGHT)
+                                -1 * velocity * flingAnimationSize
+                            else
+                                1 * velocity * flingAnimationSize
 
 
-                        spring.setStartVelocity(v).start()
+                            spring.setStartVelocity(v).start()
+                        }
+
+
 
                         forEachVisibleHolder{holder: ViewHolder? -> if (holder is BouncyViewHolder)holder.onAbsorb(velocity)}
                     }

@@ -15,6 +15,6 @@ class MainActivity : AppCompatActivity()
 
 
         findViewById<BouncyRecyclerView>(R.id.rc).adapter = MyAdapter(30)
-        findViewById<BouncyRecyclerView>(R.id.rc).layoutManager = LinearLayoutManager(this)
+        findViewById<BouncyRecyclerView>(R.id.rc).layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
 }
