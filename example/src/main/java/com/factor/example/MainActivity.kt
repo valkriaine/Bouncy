@@ -2,7 +2,7 @@ package com.factor.example
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.factor.bouncy.BouncyRecyclerView
 
 
@@ -15,6 +15,6 @@ class MainActivity : AppCompatActivity()
 
 
         findViewById<BouncyRecyclerView>(R.id.rc).adapter = MyAdapter(30)
-        findViewById<BouncyRecyclerView>(R.id.rc).layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        findViewById<BouncyRecyclerView>(R.id.rc).layoutManager = GridLayoutManager(this, 2,  GridLayoutManager.VERTICAL, false)
     }
 }

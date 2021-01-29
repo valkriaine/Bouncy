@@ -3,10 +3,12 @@ package com.factor.bouncy
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
+import android.util.Log
 import android.widget.EdgeEffect
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.factor.bouncy.util.*
 
@@ -96,8 +98,11 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
     override fun setLayoutManager(layout: LayoutManager?)
     {
         super.setLayoutManager(layout)
-        orientation = layout?.layoutDirection
-        setupDirection(orientation)
+        if (layout is LinearLayoutManager)
+        {
+            orientation = layout.orientation
+            setupDirection(orientation)
+        }
     }
 
 
@@ -118,7 +123,9 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                         .setFinalPosition(0f)
                         .setDampingRatio(dampingRatio)
                         .setStiffness(stiffness))
+
         }
+        Log.wtf("orientation", "orientation: $orientation")
     }
 
     init {
