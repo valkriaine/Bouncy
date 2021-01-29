@@ -1,6 +1,6 @@
 # Bouncy 
 
-[ ![Download](https://api.bintray.com/packages/valkriaine/factor/bouncy/images/download.svg?version=1.61) ](https://bintray.com/valkriaine/factor/bouncy/1.61/link)
+[ ![Download](https://api.bintray.com/packages/valkriaine/factor/bouncy/images/download.svg?version=1.7) ](https://bintray.com/valkriaine/factor/bouncy/1.7/link)
 
 Add IOS-like overscroll animation to your scrolling views using [SpringAnimation](https://developer.android.com/guide/topics/graphics/spring-animation). 
 
@@ -12,7 +12,7 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 ```
    dependencies {
         implementation 'androidx.recyclerview:recyclerview:1.1.0'
-        implementation 'com.factor:bouncy:1.61'
+        implementation 'com.factor:bouncy:1.7'
    }
  ```
 (androidx.recyclerview is required for BouncyRecyclerView to work)
@@ -85,6 +85,24 @@ set up layout manager and adapter. Theoratically supports any LayoutManager:
    recycler_view.setAdapter(myAdapter);
    recycler_view.setLayoutManager(new LinearLayoutManager(context));
    //recycler_view.setLayoutManager(new GridLayoutManager(context, 3));
+```
+
+## Orientation 
+
+1.7 version added support for both vertical scrolling and horizontal bounce animation
+
+<img src="./images/BouncyRecyclerView_Horizontal.gif"/> 
+
+When you set the LayoutManager, ```BouncyRecyclerView``` will automatically detect the orientation of the layout. 
+
+```java
+   recycler_view.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+```
+
+If the bounce animation is incorrect, you can also manually set the animation orientation:
+
+```java
+   recycler_view.setOrientation(LinearLayoutManager.VERTICAL);
 ```
 
 ## Customization
