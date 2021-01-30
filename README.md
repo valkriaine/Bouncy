@@ -1,6 +1,7 @@
 # Bouncy 
 
 [ ![Download](https://api.bintray.com/packages/valkriaine/factor/bouncy/images/download.svg?version=1.8) ](https://bintray.com/valkriaine/factor/bouncy/1.8/link)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Bouncy-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/8218)
 
 Add IOS-like overscroll animation to your scrolling views using [SpringAnimation](https://developer.android.com/guide/topics/graphics/spring-animation). 
 
