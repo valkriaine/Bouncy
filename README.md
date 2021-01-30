@@ -9,6 +9,8 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
 # Add Bouncy to your project
 
+ ### Gradle
+ 
  In your app module build.gradle:
 ```
    dependencies {
@@ -17,6 +19,18 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
    }
  ```
 (androidx.recyclerview is required for BouncyRecyclerView to work)
+
+
+### Maven
+
+```
+<dependency>
+	<groupId>com.factor</groupId>
+	<artifactId>bouncy</artifactId>
+	<version>1.8</version>
+	<type>pom</type>
+</dependency>
+```
 
 
 # BouncyNestedScrollView
