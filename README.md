@@ -165,7 +165,7 @@ A known issue is when customizing spring properties, items close to the edges of
 
 Drag & drop does not work out of the box. 
 
-For drag & drop or swipe gestures to work, make your adapter extend ```BouncyRecyclerView.Adapter``` and add constructor matching parent.
+For drag & drop or swipe gestures to work, make your adapter extend ```BouncyRecyclerView.Adapter```.
 (If your adapter does not extend BouncyRecyclerView.Adapter, BouncyRecyclerView will simply disable the gestures)
 
 ```java
