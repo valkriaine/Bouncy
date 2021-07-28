@@ -21,5 +21,10 @@
       <option name="name" value="Google" />
       <option name="url" value="https://dl.google.com/dl/android/maven2/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="artifactory-maven-resolver" />
+      <option name="name" value="artifactory-maven-resolver" />
+      <option name="url" value="https://valkriaine.jfrog.io/artifactory/factor-gradle-dev" />
+    </remote-repository>
   </component>
 </project>

@@ -10,6 +10,7 @@
 
     <com.factor.bouncy.BouncyRecyclerView
             android:id="@+id/rc"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:allow_item_swipe="true"

@@ -15,6 +15,5 @@ class MainActivity : AppCompatActivity()
 
 
         findViewById<BouncyRecyclerView>(R.id.rc).adapter = MyAdapter(30)
-        findViewById<BouncyRecyclerView>(R.id.rc).layoutManager = GridLayoutManager(this, 2,  GridLayoutManager.VERTICAL, false)
     }
 }
