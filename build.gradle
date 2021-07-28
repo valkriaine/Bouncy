@@ -24,28 +24,6 @@ allprojects {
     }
 }
 
-artifactory {
-    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
-    publish {
-        repository {
-            repoKey = 'factor-gradle-dev-local'
-            username = "${artifactory_user}"
-            password = "${artifactory_password}"
-            maven = true
-
-        }
-    }
-    resolve {
-        repository {
-            repoKey = 'factor-gradle-dev'
-            username = "${artifactory_user}"
-            password = "${artifactory_password}"
-            maven = true
-
-        }
-    }
-}
-
 task clean(type: Delete){
     delete rootProject.buildDir
 }
