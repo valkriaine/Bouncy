@@ -23,7 +23,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
 
     var flingAnimationSize = 0.5f
 
-    var orientation : Int? = VERTICAL
+    var orientation : Int? = 1
         set(value)
         {
             field = value
@@ -110,26 +110,22 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
     private fun setupDirection(orientation : Int?)
     {
 
-        if (stiffness > 0F)
+        when (orientation)
         {
-            when (orientation)
-            {
-                HORIZONTAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_X)
-                    .setSpring(SpringForce()
+            HORIZONTAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_X)
+                .setSpring(SpringForce()
                         .setFinalPosition(0f)
                         .setDampingRatio(dampingRatio)
                         .setStiffness(stiffness))
 
-                VERTICAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_Y)
-                    .setSpring(SpringForce()
+            VERTICAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_Y)
+                .setSpring(SpringForce()
                         .setFinalPosition(0f)
                         .setDampingRatio(dampingRatio)
                         .setStiffness(stiffness))
 
-            }
         }
-
-        Log.wtf("stiffness", "stiffness: $stiffness")
+        Log.wtf("orientation", "orientation: $orientation")
     }
 
     init {
