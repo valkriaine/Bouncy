@@ -25,9 +25,9 @@ class DragDropCallBack(private val adapter: RecyclerView.Adapter<*>,
         if (isItemViewSwipeEnabled && adapter is DragDropAdapter<*>)
         {
             if (i == ItemTouchHelper.START)
-                adapter.onItemSwipedToStart(viewHolder, viewHolder.adapterPosition)
+                adapter.onItemSwipedToStart(viewHolder, viewHolder.bindingAdapterPosition)
             else if (i == ItemTouchHelper.END)
-                adapter.onItemSwipedToEnd(viewHolder, viewHolder.adapterPosition)
+                adapter.onItemSwipedToEnd(viewHolder, viewHolder.bindingAdapterPosition)
         }
     }
 
@@ -42,7 +42,7 @@ class DragDropCallBack(private val adapter: RecyclerView.Adapter<*>,
     {
         return if (isLongPressDragEnabled && adapter is DragDropAdapter<*>)
         {
-            adapter.onItemMoved(viewHolder.adapterPosition, target.adapterPosition)
+            adapter.onItemMoved(viewHolder.bindingAdapterPosition, target.bindingAdapterPosition)
             true
         }
         else
