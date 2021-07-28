@@ -3,7 +3,6 @@ package com.factor.bouncy
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
-import android.util.Log
 import android.widget.EdgeEffect
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
@@ -109,23 +108,24 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
 
     private fun setupDirection(orientation : Int?)
     {
-
-        when (orientation)
+        if (stiffness > 0)
         {
-            HORIZONTAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_X)
-                .setSpring(SpringForce()
+            when (orientation)
+            {
+                HORIZONTAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_X)
+                    .setSpring(SpringForce()
                         .setFinalPosition(0f)
                         .setDampingRatio(dampingRatio)
                         .setStiffness(stiffness))
 
-            VERTICAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_Y)
-                .setSpring(SpringForce()
+                VERTICAL -> spring = SpringAnimation(this, SpringAnimation.TRANSLATION_Y)
+                    .setSpring(SpringForce()
                         .setFinalPosition(0f)
                         .setDampingRatio(dampingRatio)
                         .setStiffness(stiffness))
 
+            }
         }
-        Log.wtf("orientation", "orientation: $orientation")
     }
 
     init {
