@@ -16,14 +16,16 @@ Please manually download the newest release at [releases](https://github.com/val
 
  ### Gradle
  
- In your app module build.gradle, add dependency for `recyclerview`:
+  In Android Studio, File -> New -> New Module -> Import .jar/.aar and import `bouncy-release.aar`.
+  
+ In your app module build.gradle, add dependency for `recyclerview` and `bouncy-release`:
 ```
    dependencies {
         implementation 'androidx.recyclerview:recyclerview:1.2.1'
+        implementation project(':bouncy-release')
    }
  ```
-
-
+ 
 # BouncyNestedScrollView
 
 NestedScrollView with bouncy overscroll effect, currently only supports vertical scrolling. 
