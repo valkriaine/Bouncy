@@ -1,13 +1,13 @@
 # Bouncy 
 
+[![](https://jitpack.io/v/valkriaine/Bouncy.svg)](https://jitpack.io/#valkriaine/Bouncy)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Bouncy-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/8218)
 
 Add IOS-like overscroll animation to your scrolling views using [SpringAnimation](https://developer.android.com/guide/topics/graphics/spring-animation). 
 
 Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
-Since [Jcenter is closing](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/), this project will be migrated to MavenCentral in the future. For now please manually download from [releases](https://github.com/valkriaine/Bouncy/releases) until further notice. 
-
+Since [Jcenter is closing](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/), this project will be migrated to JitPack in the future. For now please manually download from [releases](https://github.com/valkriaine/Bouncy/releases) until further notice. 
 Thank you for your understanding.
 
 # Add Bouncy to your project
@@ -16,14 +16,16 @@ Please manually download the newest release at [releases](https://github.com/val
 
  ### Gradle
  
- In your app module build.gradle, add dependency for `recyclerview`:
+  In Android Studio, File -> New -> New Module -> Import .jar/.aar and import `bouncy-release.aar`.
+  
+ In your app module build.gradle, add dependency for `recyclerview` and `bouncy-release`:
 ```
    dependencies {
         implementation 'androidx.recyclerview:recyclerview:1.2.1'
+        implementation project(':bouncy-release')
    }
  ```
-
-
+ 
 # BouncyNestedScrollView
 
 NestedScrollView with bouncy overscroll effect, currently only supports vertical scrolling. 
