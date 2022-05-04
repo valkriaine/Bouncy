@@ -125,7 +125,7 @@ If the bounce animation is incorrect, you can also manually set the animation or
 
 ```allow_drag_reorder``` and ```allow_item_swipe``` are set to false by default. If you would like to enable these features, simply set them to true.
 
-### Spring customization (Bouncy 1.6 and above)
+### Spring customization
 
 ```recyclerview_damping_ratio``` and ```recyclerview_stiffness``` please refer to [damping ratio](https://developer.android.com/guide/topics/graphics/spring-animation#damping-ratio) and [stiffness](https://developer.android.com/guide/topics/graphics/spring-animation#stiffness)
 
