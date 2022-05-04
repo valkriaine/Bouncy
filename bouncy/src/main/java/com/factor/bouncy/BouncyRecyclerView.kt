@@ -161,7 +161,7 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
 
 
         //create edge effect
-        this.edgeEffectFactory = object : RecyclerView.EdgeEffectFactory()
+        this.edgeEffectFactory = object : EdgeEffectFactory()
         {
             override fun createEdgeEffect(recyclerView: RecyclerView, direction: Int): EdgeEffect
             {
