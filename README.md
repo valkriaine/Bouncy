@@ -7,22 +7,26 @@ Add IOS-like overscroll animation to your scrolling views using [SpringAnimation
 
 Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 
-Since [Jcenter is closing](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/), this project will be migrated to JitPack in the future. For now please manually download from [releases](https://github.com/valkriaine/Bouncy/releases) until further notice. 
-Thank you for your understanding.
-
 # Add Bouncy to your project
-
-Please manually download the newest release at [releases](https://github.com/valkriaine/Bouncy/releases).
 
  ### Gradle
  
-  In Android Studio, File -> New -> New Module -> Import .jar/.aar and import `bouncy-release.aar`.
+ Add it in your root build.gradle at the end of repositories:
+ 
+  ```
+ allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+ ```
   
- In your app module build.gradle, add dependency for `recyclerview` and `bouncy-release`:
+ In your app module build.gradle, add dependency for `recyclerview` and `bouncy`:
 ```
    dependencies {
         implementation 'androidx.recyclerview:recyclerview:1.2.1'
-        implementation project(':bouncy-release')
+        implementation 'com.github.valkriaine:Bouncy:2.1'
    }
  ```
  
