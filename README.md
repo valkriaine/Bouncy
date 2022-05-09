@@ -69,6 +69,15 @@ Use as normal NestedScrollView. Place it in your layout:
 
 Strongly suggest to keep both values lower than 5.
 
+### It is now possible to bind bouncy animation to parent instead of BouncyNestedScrollView
+
+```java
+bouncy_scroll_view.setBindSpringToParent(true);
+
+// this will bind the spring animations to parent instead of self
+
+```
+
 # BouncyRecyclerView
 
 BouncyRecyclerView adds overscroll effect to RecyclerView and supports drag & drop and swiping gestures
