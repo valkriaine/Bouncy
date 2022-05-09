@@ -147,25 +147,6 @@ Set in code:
    recycler_view.setStiffness(Bouncy.STIFFNESS_HIGH);
 ```
 
-A known issue is when customizing spring properties, items close to the edges of the screen may be clipped since the current implementation animates the Y translation of the whole recyclerview. A workaround is to place the ```BouncyRecyclerView``` inside a ```NestedScrollView``` :
-
-```xml
-<androidx.core.widget.NestedScrollView 
-            android:layout_width="match_parent" 
-            android:layout_height="match_parent">
-
-        <!--setting damping ratio to HIGH_BOUNCY may result in items being clipped near the edges-->
-        <com.factor.bouncy.BouncyRecyclerView
-                android:id="@+id/rc"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:recyclerview_damping_ratio="DAMPING_RATIO_HIGH_BOUNCY"
-                app:recyclerview_stiffness="STIFFNESS_LOW"
-                app:allow_drag_reorder="true"
-                app:allow_item_swipe="true"/>
-        
-    </androidx.core.widget.NestedScrollView>
-```
 
 ## Drag & drop 
 
