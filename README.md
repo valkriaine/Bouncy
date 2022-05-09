@@ -26,7 +26,7 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 ```
    dependencies {
         implementation 'androidx.recyclerview:recyclerview:1.2.1'
-        implementation 'com.github.valkriaine:Bouncy:2.1'
+        implementation 'com.github.valkriaine:Bouncy:2.2'
    }
  ```
  
