@@ -1,8 +1,10 @@
 package com.factor.bouncy
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.widget.EdgeEffect
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
@@ -75,6 +77,22 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                 .setDampingRatio(dampingRatio)
                 .setStiffness(stiffness)
         )
+
+
+    var touched: Boolean = false
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouchEvent(e: MotionEvent?): Boolean
+    {
+
+        touched = when (e?.actionMasked)
+        {
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> false
+            else -> true
+        }
+        return super.onTouchEvent(e)
+    }
 
 
     override fun setAdapter(adapter: RecyclerView.Adapter<*>?)
@@ -215,6 +233,11 @@ class BouncyRecyclerView(context: Context, attrs: AttributeSet?) : RecyclerView(
                     override fun onRelease()
                     {
                         super.onRelease()
+
+                        if (touched)
+                            return
+
+
                         onOverPullListener?.onRelease()
                         spring.start()
 

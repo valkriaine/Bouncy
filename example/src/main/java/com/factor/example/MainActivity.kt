@@ -3,6 +3,7 @@ package com.factor.example
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
+import com.factor.bouncy.BouncyNestedScrollView
 import com.factor.bouncy.BouncyRecyclerView
 
 
@@ -13,8 +14,9 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        findViewById<BouncyNestedScrollView>(R.id.scrollView).bindSpringToParent = true
 
-        findViewById<BouncyRecyclerView>(R.id.rc).adapter = MyAdapter(30)
-        findViewById<BouncyRecyclerView>(R.id.rc).layoutManager = GridLayoutManager(this, 2,  GridLayoutManager.VERTICAL, false)
+        //findViewById<BouncyRecyclerView>(R.id.rc).adapter = MyAdapter(30)
+        //findViewById<BouncyRecyclerView>(R.id.rc).layoutManager = GridLayoutManager(this, 2,  GridLayoutManager.VERTICAL, false)
     }
 }

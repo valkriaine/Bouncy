@@ -7,17 +7,32 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent">
 
-    <com.factor.bouncy.BouncyRecyclerView
-            android:id="@+id/rc"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:allow_item_swipe="true"
-            app:allow_drag_reorder="true"/>
+        <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"/>
 
-    <!--BouncyNestedScrollView-->
+    </com.google.android.material.appbar.AppBarLayout>
+
+
     <!--
+        <com.factor.bouncy.BouncyRecyclerView
+                android:id="@+id/rc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:allow_item_swipe="true"
+                app:allow_drag_reorder="true"/>
+                 -->
+
+        <!--BouncyNestedScrollView-->
+
     <com.factor.bouncy.BouncyNestedScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -29,7 +44,7 @@
 
             <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="200dp"
                     app:cardCornerRadius="15dp"
                     android:layout_margin="10dp"
                     app:cardBackgroundColor="#9C27B0"/>
@@ -157,6 +172,6 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </com.factor.bouncy.BouncyNestedScrollView>
-    -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
