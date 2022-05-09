@@ -95,8 +95,8 @@ Use as normal RecyclerView. Place it in your layout:
         android:layout_height="match_parent"
         app:recyclerview_fling_animation_size=".7"
         app:recyclerview_overscroll_animation_size=".7"
-        app:recyclerview_damping_ratio="RECYCLERVIEW_DAMPING_RATIO_LOW_BOUNCY"
-        app:recyclerview_stiffness="RECYCLERVIEW_STIFFNESS_MEDIUM"
+        app:recyclerview_damping_ratio="DAMPING_RATIO_LOW_BOUNCY"
+        app:recyclerview_stiffness="STIFFNESS_MEDIUM"
         app:allow_drag_reorder="true"
         app:allow_item_swipe="false"/>
 ```
