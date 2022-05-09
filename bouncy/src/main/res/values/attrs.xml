@@ -4,13 +4,13 @@
         <attr name="overscroll_animation_size" format="float"/>
         <attr name="fling_animation_size" format="float"/>
 
-        <attr name="damping_ratio" format="integer">
+        <attr name="bouncy_scrollview_damping_ratio" format="integer">
             <enum name="DAMPING_RATIO_NO_BOUNCY" value="0" />
             <enum name="DAMPING_RATIO_LOW_BOUNCY" value="1" />
             <enum name="DAMPING_RATIO_MEDIUM_BOUNCY" value="2" />
             <enum name="DAMPING_RATIO_HIGH_BOUNCY" value="3" />
         </attr>
-        <attr name="stiffness" format="integer">
+        <attr name="bouncy_scrollview_stiffness" format="integer">
             <enum name="STIFFNESS_VERY_LOW" value="0" />
             <enum name="STIFFNESS_LOW" value="1" />
             <enum name="STIFFNESS_MEDIUM" value="2" />
@@ -26,16 +26,16 @@
         <attr name="allow_item_swipe" format="boolean"/>
 
         <attr name="recyclerview_damping_ratio" format="integer">
-            <enum name="RECYCLERVIEW_DAMPING_RATIO_NO_BOUNCY" value="0" />
-            <enum name="RECYCLERVIEW_DAMPING_RATIO_LOW_BOUNCY" value="1" />
-            <enum name="RECYCLERVIEW_DAMPING_RATIO_MEDIUM_BOUNCY" value="2" />
-            <enum name="RECYCLERVIEW_DAMPING_RATIO_HIGH_BOUNCY" value="3" />
+            <enum name="DAMPING_RATIO_NO_BOUNCY" value="0" />
+            <enum name="DAMPING_RATIO_LOW_BOUNCY" value="1" />
+            <enum name="DAMPING_RATIO_MEDIUM_BOUNCY" value="2" />
+            <enum name="DAMPING_RATIO_HIGH_BOUNCY" value="3" />
         </attr>
         <attr name="recyclerview_stiffness" format="integer">
-            <enum name="RECYCLERVIEW_STIFFNESS_VERY_LOW" value="0" />
-            <enum name="RECYCLERVIEW_STIFFNESS_LOW" value="1" />
-            <enum name="RECYCLERVIEW_STIFFNESS_MEDIUM" value="2" />
-            <enum name="RECYCLERVIEW_STIFFNESS_HIGH" value="3" />
+            <enum name="STIFFNESS_VERY_LOW" value="0" />
+            <enum name="STIFFNESS_LOW" value="1" />
+            <enum name="STIFFNESS_MEDIUM" value="2" />
+            <enum name="STIFFNESS_HIGH" value="3" />
         </attr>
     </declare-styleable>
 </resources>

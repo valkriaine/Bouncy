@@ -1951,7 +1951,7 @@ class BouncyNestedScrollView @JvmOverloads constructor(context: Context, attrs: 
                 overscrollAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_overscroll_animation_size, 0.5f)
                 flingAnimationSize = getFloat(R.styleable.BouncyNestedScrollView_fling_animation_size, 0.5f)
 
-                when (getInt(R.styleable.BouncyNestedScrollView_damping_ratio, 0))
+                when (getInt(R.styleable.BouncyNestedScrollView_bouncy_scrollview_damping_ratio, 0))
                 {
                     0 -> dampingRatio = Bouncy.DAMPING_RATIO_NO_BOUNCY
                     1 -> dampingRatio = Bouncy.DAMPING_RATIO_LOW_BOUNCY
@@ -1959,7 +1959,7 @@ class BouncyNestedScrollView @JvmOverloads constructor(context: Context, attrs: 
                     3 -> dampingRatio = Bouncy.DAMPING_RATIO_HIGH_BOUNCY
                 }
 
-                when (getInt(R.styleable.BouncyNestedScrollView_stiffness, 1))
+                when (getInt(R.styleable.BouncyNestedScrollView_bouncy_scrollview_stiffness, 1))
                 {
                     0 -> stiffness = Bouncy.STIFFNESS_VERY_LOW
                     1 -> stiffness = Bouncy.STIFFNESS_LOW

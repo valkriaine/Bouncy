@@ -15,24 +15,27 @@
         <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"/>
+                android:background="@color/cardview_light_background"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <!--
+        <!--
         <com.factor.bouncy.BouncyRecyclerView
                 android:id="@+id/rc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:recyclerview_stiffness="STIFFNESS_HIGH"
                 app:allow_item_swipe="true"
                 app:allow_drag_reorder="true"/>
-                 -->
+
+        -->
 
         <!--BouncyNestedScrollView-->
 
     <com.factor.bouncy.BouncyNestedScrollView
             android:id="@+id/scrollView"
+            app:bouncy_scrollview_stiffness="STIFFNESS_LOW"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
