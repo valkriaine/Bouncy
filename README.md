@@ -110,8 +110,6 @@ set up layout manager and adapter. Theoratically supports any LayoutManager:
 
 ## Orientation 
 
-1.8 version added support for both vertical scrolling and horizontal bounce animation
-
 <img src="./images/BouncyRecyclerView_Horizontal.gif"/> 
 
 When you set the LayoutManager, ```BouncyRecyclerView``` will automatically detect the orientation of the layout. 
