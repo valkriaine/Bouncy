@@ -26,7 +26,7 @@ Currently includes BouncyRecyclerView and BouncyNestedScrollView.
 ```
    dependencies {
         implementation 'androidx.recyclerview:recyclerview:1.2.1'
-        implementation 'com.github.valkriaine:Bouncy:2.1'
+        implementation 'com.github.valkriaine:Bouncy:2.2'
    }
  ```
  
@@ -68,6 +68,15 @@ Use as normal NestedScrollView. Place it in your layout:
 ```overscroll_animation_size``` specifies the magnitude of overscroll effect for drag, default is 0.5 if no value is given. 
 
 Strongly suggest to keep both values lower than 5.
+
+### It is now possible to bind bouncy animation to parent instead of BouncyNestedScrollView
+
+```java
+bouncy_scroll_view.setBindSpringToParent(true);
+
+// this will bind the spring animations to parent instead of self
+
+```
 
 # BouncyRecyclerView
 
