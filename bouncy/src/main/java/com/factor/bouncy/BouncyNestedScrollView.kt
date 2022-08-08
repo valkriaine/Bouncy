@@ -1817,7 +1817,7 @@ class BouncyNestedScrollView @JvmOverloads constructor(context: Context, attrs: 
 
     internal class AccessibilityDelegate : AccessibilityDelegateCompat()
     {
-        override fun performAccessibilityAction(host: View, action: Int, arguments: Bundle): Boolean
+        override fun performAccessibilityAction(host: View, action: Int, arguments: Bundle?): Boolean
         {
             if (super.performAccessibilityAction(host, action, arguments))
                 return true
